@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-do List</title>
+</head>
+<body>
+
+    <h1>Tasks</h1>
+
+    <form>
+        <input type="text" name="task" id="task" placeholder="Enter Task">
+        <input type="submit" value="Add">
+    </form>
+  <!-- this is a unordered list container where list item will be dynamically added using js-->
+    <ul id="tasks"></ul>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+    <script>
+        // Add an event listener to capture form submit event
+        $('form').submit(addNewItem);
+
+        function addNewItem() {
+
+            // Read the text input i.e., get what the user typed in
+            const task = $('#task').val();
+
+            // Create a new li and append it to the list (ul)
+            $('#tasks').append('<li>' + task +'</li>');
+            // Alternative to the above line with $ notation
+            //$('#tasks').append(`<li>${task}</li>`);
+
+            // Clear the textbox
+            $('#task').val("");
+
+            //Stop form from submitting as we are not actually sending this data to a server
+            return false;
+        }
+
+    </script>
+</body>
+</html>
